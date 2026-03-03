@@ -1,40 +1,155 @@
 # Catnfacts 🐱📸
 
-Mała aplikacja webowa w **Next.js (App Router)**, która serwuje:
-- losowe zdjęcia kotów,
-- losowe ciekawostki o kotach,
-- oraz wybór rasy (breed) do losowania zdjęcia dla konkretnej rasy.
+A simple web application built with **Next.js (App Router)** that displays:
 
-Demo: catnfacts.vercel.app :contentReference[oaicite:1]{index=1}
+* A random cat image
+* A random cat fact
+* The ability to select a specific breed and fetch a random image for that breed
 
----
-
-## Funkcje
-
-- **Random cat**: zdjęcie + fakt (jednym kliknięciem).
-- **Breed selector**: pobranie listy ras i losowanie zdjęcia dla wybranej rasy.
-- Proste endpointy API po stronie Next.js (`/api/*`) jako proxy do zewnętrznych API.
-
-Źródła danych:
-- obrazy i rasy: TheCatAPI (`/v1/images/search`, `/v1/breeds`) :contentReference[oaicite:2]{index=2}  
-- fakty: MeowFacts (`https://meowfacts.herokuapp.com/`) :contentReference[oaicite:3]{index=3}
+Live demo: https://catnfacts.vercel.app
 
 ---
 
-## Stack
+## Features
 
-- Next.js **15.4.6**
-- React **19.1.0**
-- TypeScript
-- Tailwind CSS
-- motion (animacje), react-simple-typewriter, react-icons :contentReference[oaicite:4]{index=4}
+* **Random Cat Generator** – Fetches a random cat image along with a random fact.
+* **Breed Selection** – Allows users to select a cat breed and retrieve a random image for that specific breed.
+* **Custom API Routes** – Uses Next.js API routes as a backend proxy for external APIs.
+* **Responsive UI** – Styled with Tailwind CSS.
+* **Basic Animations** – Enhanced user experience with lightweight animation libraries.
 
 ---
 
-## Szybki start (lokalnie)
+## Tech Stack
 
-Wymagania: Node.js (najlepiej LTS) + npm.
+* **Next.js 15 (App Router)**
+* **React 19**
+* **TypeScript**
+* **Tailwind CSS**
+* motion (animations)
+* react-simple-typewriter
+* react-icons
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+* Node.js (LTS recommended)
+* npm
+
+### Installation
 
 ```bash
 npm install
+```
+
+### Run Development Server
+
+```bash
 npm run dev
+```
+
+Open:
+http://localhost:3000
+
+### Other Scripts
+
+```bash
+npm run build
+npm run start
+npm run lint
+```
+
+---
+
+## API Routes
+
+The application uses internal Next.js API routes to communicate with external services.
+
+### `GET /api/randomcat`
+
+Returns a random cat image and a random fact.
+
+**Response example:**
+
+```json
+{
+  "imageUrl": "https://example.com/cat.jpg",
+  "fact": "Cats sleep for around 13 to 16 hours a day."
+}
+```
+
+---
+
+### `GET /api/breeds`
+
+Returns a list of cat breeds fetched from TheCatAPI.
+
+---
+
+### `GET /api/randomCatByBreed?breed=<breedId>`
+
+Returns a random image for a specific breed along with a random fact.
+
+* Returns **400** if the `breed` query parameter is missing.
+
+---
+
+## External APIs Used
+
+* **TheCatAPI** – Cat images and breed data
+* **MeowFacts API** – Random cat facts
+
+---
+
+## How It Works
+
+1. On initial load:
+
+   * The app fetches a random cat (`/api/randomcat`)
+   * The app fetches the list of breeds (`/api/breeds`)
+
+2. When the user clicks "New Cat":
+
+   * If a breed is selected → `/api/randomCatByBreed`
+   * If no breed is selected → `/api/randomcat`
+
+The frontend communicates only with internal API routes, keeping external API calls server-side.
+
+---
+
+## Environment Variables
+
+Currently, the project does not require environment variables.
+
+If using a private API key for TheCatAPI in the future, it should be stored in:
+
+```
+.env.local
+```
+
+And accessed securely inside API routes.
+
+---
+
+## Deployment
+
+The project can be easily deployed on **Vercel**, which provides native support for Next.js applications.
+
+---
+
+## What I Learned
+
+Building this project helped me improve my understanding of:
+
+* **Next.js App Router structure** and organizing routes inside the `/app` directory.
+* Creating and handling **custom API routes** in Next.js.
+* Using the server as a proxy for external APIs to keep requests secure.
+* Working with **query parameters** in API endpoints.
+* Managing asynchronous data fetching with `fetch`.
+* Handling basic error responses (e.g., missing query parameters).
+* Structuring a small full-stack project within a single Next.js application.
+* Improving UI responsiveness and adding lightweight animations.
+* Deploying a Next.js project to Vercel.
