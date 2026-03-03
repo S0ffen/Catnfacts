@@ -9,6 +9,19 @@ A simple web application built with **Next.js (App Router)** that displays:
 Live demo: https://catnfacts.vercel.app
 
 ---
+## What I Learned
+
+Building this project helped me improve my understanding of:
+
+* **Next.js App Router structure** and organizing routes inside the `/app` directory.
+* Creating and handling **custom API routes** in Next.js.
+* Using the server as a proxy for external APIs to keep requests secure.
+* Working with **query parameters** in API endpoints.
+* Managing asynchronous data fetching with `fetch`.
+* Handling basic error responses (e.g., missing query parameters).
+* Structuring a small full-stack project within a single Next.js application.
+* Improving UI responsiveness and adding lightweight animations.
+* Deploying a Next.js project to Vercel.
 
 ## Features
 
@@ -140,16 +153,3 @@ The project can be easily deployed on **Vercel**, which provides native support 
 
 ---
 
-## What I Learned
-
-Building this project helped me improve my understanding of:
-
-* **Next.js App Router structure** and organizing routes inside the `/app` directory.
-* Creating and handling **custom API routes** in Next.js.
-* Using the server as a proxy for external APIs to keep requests secure.
-* Working with **query parameters** in API endpoints.
-* Managing asynchronous data fetching with `fetch`.
-* Handling basic error responses (e.g., missing query parameters).
-* Structuring a small full-stack project within a single Next.js application.
-* Improving UI responsiveness and adding lightweight animations.
-* Deploying a Next.js project to Vercel.
